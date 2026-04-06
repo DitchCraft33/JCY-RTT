@@ -1,0 +1,229 @@
+import subprocess, re, sys, json, socket, struct, bisect, urllib.request, ssl, os
+
+def live_bgp_lookup(ip):
+    try:
+        with socket.create_connection(("bgp.tools", 43), timeout=2) as s:
+            s.sendall(f"{ip}\n".encode())
+            response = b""
+            while True:
+                chunk = s.recv(4096)
+                if not chunk: break
+                response += chunk
+            line = response.decode().strip()
+            if "|" in line:
+                parts = [p.strip() for p in line.split("|")]
+                if len(parts) >= 5:
+                    raw_asn = parts[0].upper().replace('AS', '').strip()
+                    if raw_asn.isdigit(): return raw_asn, parts[4][:25]
+    except: pass
+    try:
+        raw_whois = subprocess.check_output(["whois", ip], timeout=5, stderr=subprocess.DEVNULL).decode(errors='ignore')
+        asn_match = re.search(r'(?:origin|OriginAS|aut-num):\s*(?:AS)?(\d+)', raw_whois, re.I)
+        org_match = re.search(r'(?:descr|Organization|OrgName|owner|mnt-by):\s*(.*)', raw_whois, re.I)
+        found_asn = asn_match.group(1) if asn_match else "???"
+        found_org = org_match.group(1).split(',')[0].strip()[:25] if org_match else "Unknown"
+        return found_asn, found_org
+    except: return "???", "Unknown"
+
+def learn_new_infra(ip, asn, carrier):
+    infra_file = 'local_infra.json'
+    try:
+        if os.path.exists(infra_file):
+            with open(infra_file, 'r', encoding='utf-8') as f: data = json.load(f)
+        else: data = {}
+    except: data = {}
+    asn_str = str(asn)
+    new_entry = f"{ip}/32"
+    if asn_str in data:
+        if new_entry not in data[asn_str]["NETWORKS"]:
+            data[asn_str]["NETWORKS"].append(new_entry)
+    else:
+        data[asn_str] = {"AS_NAME": carrier, "AS_CARRIER": carrier, "NETWORKS": [new_entry], "TYPE": "INFRA_LEARNED"}
+    with open(infra_file, 'w', encoding='utf-8') as f: json.dump(data, f, indent=4)
+
+def audit_upstream_map(asns):
+    map_file = 'upstream_map.json'
+    try:
+        if os.path.exists(map_file):
+            with open(map_file, 'r', encoding='utf-8') as f: up_map = json.load(f)
+        else: up_map = {}
+    except: up_map = {}
+    changed = False
+    context = ssl._create_unverified_context()
+    headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36'}
+    for asn in asns:
+        if asn in ["---", "???"] or str(asn) in up_map: continue
+        try:
+            url = f"https://bgp.tools/as/{asn}"
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, context=context, timeout=10) as response:
+                html = response.read().decode('utf-8', errors='ignore')
+                raw_text = " ".join(re.sub('<[^<]+?>', ' ', html).split())
+                stats_zone = ""
+                if "Connectivity" in raw_text:
+                    parts = re.split(r'Connectivity', raw_text, flags=re.I)
+                    if len(parts) > 1:
+                        stats_zone = re.split(r'Rankings|Information|Prefixes', parts[1], flags=re.I)[0]
+                def get_count(label):
+                    matches = re.findall(rf'(\d+(?:\s\(Cone:\s\d+\))?)\s*{label}', stats_zone, re.I)
+                    for m in matches:
+                        idx = raw_text.find(f"{m} {label}")
+                        if "ranked" not in raw_text[max(0, idx-20):idx].lower(): return m.strip()
+                    alt_match = re.search(rf'{label}\s*(\d+(?:\s\(Cone:\s\d+\))?)', raw_text, re.I)
+                    return alt_match.group(1).strip() if alt_match else "0"
+                up_area = re.search(r'Upstreams(.*?)(?:Peers|Downstreams|Rankings|Information)', raw_text, re.I)
+                upstreams = re.findall(r'AS(\d+)\s*-\s*([^#]+?)(?=\sAS\d+|$)', up_area.group(1)) if up_area else []
+                ixps = []
+                ixp_html = re.search(r'Internet Exchange Points</h3>(.*?)</table>', html, re.S | re.I)
+                if ixp_html:
+                    rows = re.findall(r'<tr.*?>(.*?)</tr>', ixp_html.group(1), re.S | re.I)
+                    for row in rows:
+                        cells = re.findall(r'<td.*?>(.*?)</td>', row, re.S | re.I)
+                        clean_cells = [re.sub('<[^<]+?>', '', c).strip() for c in cells if c.strip()]
+                        if any('bps' in c.lower() for c in clean_cells):
+                            speed = next((c for c in clean_cells if 'bps' in c.lower()), "---")
+                            ipv4 = next((c for c in clean_cells if re.match(r'\d{1,3}(\.\d{1,3}){3}', c)), "---")
+                            name = next((c for c in clean_cells if c != speed and c != ipv4 and len(c) > 2), "Unknown")
+                            ixps.append({"exchange": name, "ip": ipv4, "speed": speed})
+                up_map[str(asn)] = {
+                    "stats": {"peers": get_count("Peers"), "upstreams": get_count("Upstreams"), "downstreams": get_count("Downstreams")},
+                    "transit": [{"asn": u[0], "name": u[1].strip()} for u in upstreams[:5]],
+                    "ixps": ixps
+                }
+                changed = True
+        except: continue
+    if changed:
+        with open(map_file, 'w', encoding='utf-8') as f: json.dump(up_map, f, indent=4)
+
+def show_hop_info(hop_data):
+    asn = str(hop_data.get('asn', '---'))
+    if asn == "---":
+        print("\n [!] Private/Local Hop. No external data available."); input("\n [Press Enter]"); return
+    try:
+        with open('asn_map.json', 'r') as f: asn_map = json.load(f)
+        with open('upstream_map.json', 'r') as f: up_map = json.load(f)
+        with open('network_db_v4.json', 'r') as f: net_db = json.load(f)
+        if os.path.exists('local_infra.json'):
+            with open('local_infra.json', 'r') as f: net_db.update(json.load(f))
+    except: asn_map, up_map, net_db = {}, {}, {}
+    info, up_info = asn_map.get(asn, {}), up_map.get(asn, {})
+    stats, db_entry = up_info.get('stats', {}), net_db.get(asn) or net_db.get(f"{asn}_GLOBAL") or {}
+    os.system('clear')
+    print(f"\n  J2 ACQ ... AS{asn} | {info.get('description', hop_data['carrier'])}")
+    print()
+    print(f"  ASN:          {asn:<20} | Handle:      {info.get('handle', 'N/A')}")
+    print(f"  Country:      {info.get('countryCode', '??'):<20} | Category:    {info.get('category', 'ENT')}")
+    print(f"  Tier:         {hop_data['tier']:<20} | NetworkRole: {info.get('networkRole', 'N/A')}")
+    print(f"  Description:  {info.get('description', 'N/A')}")
+    print(f"\n  Assigned name:   {db_entry.get('AS_NAME', 'Unknown')}")
+    print(f"  Assigned domain: {db_entry.get('AS_DOMAIN', '---')}")
+    networks = db_entry.get('NETWORKS', [])
+    net_str = ", ".join(networks[:3]) + (f" ... (+{len(networks)-3} more)" if len(networks) > 3 else "") if networks else "No CIDR data"
+    print(f"  Assigned Block:  [ {net_str} ]")
+    print(f"\n  Peers: {stats.get('peers', '0'):<10} | Upstreams: {stats.get('upstreams', '0'):<10} | Downstreams: {stats.get('downstreams', '0')}")
+    print(f"\n  Primary Upstreams :")
+    for t in up_info.get('transit', []): print(f"    >> {t['asn']:<8} | {t['name']}")
+    print(f"\n  Primary IXP Connections :")
+    for ix in up_info.get('ixps', [])[:6]: print(f"    >> {ix.get('speed', '???'):>9} | {ix.get('exchange'):<30} | {ix.get('ip')}")
+    input("\n [Press Enter to return to Console]")
+
+def format_tier_display(map_tier, category, entry_type=None):
+    t, cat, etype = str(map_tier or "").upper(), str(category or "").upper(), str(entry_type or "").upper()
+    if "IXP" in etype: return "IXP"
+    if t == "T1": return "T-1"
+    if t == "T2": return "T-2"
+    if t in ["T3", "ISP"] or cat == "ISP" or "ISP" in etype: return "ISP"
+    return t if t else "ENT"
+
+def load_data():
+    try:
+        with open('asn_map.json', 'r', encoding='utf-8') as f: asn_map = json.load(f)
+        with open('network_db_v4.json', 'r', encoding='utf-8') as f: net_db = json.load(f)
+        if os.path.exists('local_infra.json'):
+            with open('local_infra.json', 'r', encoding='utf-8') as f: net_db.update(json.load(f))
+    except: sys.exit("Error: DB files missing.")
+    table = []
+    for asn, data in net_db.items():
+        clean_asn = asn.split('_')[0]
+        m_entry = asn_map.get(str(clean_asn), {})
+        tier_label = format_tier_display(m_entry.get("tier"), m_entry.get("category"), data.get("TYPE"))
+        for cidr in data.get("NETWORKS", []):
+            ip_raw, _, bits = cidr.partition('/')
+            start = struct.unpack("!I", socket.inet_aton(ip_raw))[0]
+            mask = (0xFFFFFFFF << (32 - int(bits))) & 0xFFFFFFFF if bits else 0xFFFFFFFF
+            table.append({"start": start, "end": start | (~mask & 0xFFFFFFFF), "asn": clean_asn, "tier": tier_label, "carrier": data.get("AS_CARRIER") or data.get("AS_NAME") or "---", "domain": data.get("AS_DOMAIN", "---")})
+    table.sort(key=lambda x: x['start'])
+    return table, [r['start'] for r in table]
+
+def run():
+    target, proto_name, port = "8.8.8.8", "UDP", "53"
+    while True:
+        lookup, starts = load_data()
+        while True:
+            os.system('clear')
+            print(f"\n FFE >> {target} // {proto_name} // {port}\n")
+            cmd = input(" (T)gt (C)hrg (F)z (S)nd : ").lower().strip()
+            if cmd == 't': 
+                print()
+                target = input("  Fix > ") or target
+            elif cmd == 'c':
+                print()
+                c = input(" (U)dp (T)cp (I)cmp > ").lower().strip()
+                if c == 'u': proto_name, port = "UDP", "53"
+                elif c == 't': proto_name, port = "TCP", "80"
+                elif c == 'i': proto_name, port = "ICMP", "---"
+            elif cmd == 'f': 
+                print()
+                port = input(" Set Fuze > ") or port
+            elif cmd == 's': break
+            elif cmd == 'e': return
+
+        p_args = ["-U", "-p", port] if proto_name == "UDP" else (["-I"] if proto_name == "ICMP" else ["-T", "-p", port])
+        print(f"\n {'HOP':<3} | {'ADDRESS':<15} | {'ASN':<6} | {'RTT':<12} | {'TIER':<4} | {'DOMAIN'}")
+        print()
+        proc = subprocess.Popen(["traceroute", "-n", "-q", "1", "-w", "2"] + p_args + [target], stdout=subprocess.PIPE, text=True)
+        found_asns, trace_results, strikes = [], {}, 0
+        for line in iter(proc.stdout.readline, ""):
+            m = re.search(r'^\s*(\d+)\s+(?:(\d{1,3}(?:\.\d{1,3}){3})|\*)\s*(?:(\d+\.\d+)\s+ms)?', line.strip())
+            if m:
+                hop, ip, rtt = m.groups()
+                if not ip or ip == "*":
+                    print(f" {hop:<3} |  * * * ")
+                    trace_results[hop] = {"ip": "* * *", "timeout": True}; strikes += 1
+                    if strikes >= 3: proc.terminate(); break
+                else:
+                    strikes, rtt_s = 0, (f"{rtt} ms" if rtt else "---")
+                    asn_ui, tier, carrier_ui, domain = "---", "---", "---", "---"
+                    if not ip.startswith(("192.168.", "10.", "172.16.")):
+                        val = struct.unpack("!I", socket.inet_aton(ip))[0]
+                        idx = bisect.bisect_right(starts, val) - 1
+                        if idx >= 0 and lookup[idx]['start'] <= val <= lookup[idx]['end']:
+                            res = lookup[idx]; asn_ui, tier, domain, carrier_ui = res['asn'], res['tier'], res['domain'], res['carrier']
+                        else:
+                            l_asn, l_carrier = live_bgp_lookup(ip)
+                            if l_asn.isdigit():
+                                asn_ui, carrier_ui, tier, domain = l_asn, l_carrier, "NEW", "whois.net"
+                                learn_new_infra(ip, l_asn, l_carrier)
+                            else: asn_ui, carrier_ui, tier, domain = "---", l_carrier, "???", "whois.net"
+                    else: tier, carrier_ui, domain = "LOC", "GATEWAY", "local.lan"
+                    trace_results[hop] = {"ip": ip, "asn": asn_ui, "rtt": rtt_s, "carrier": carrier_ui, "tier": tier, "domain": domain, "timeout": False}
+                    if asn_ui not in ["---", "???"]: found_asns.append(asn_ui)
+                    print(f" {hop:<3} | {ip:<15} | {asn_ui:<6} | {rtt_s:<12} | {tier:<4} | {domain}")
+        audit_upstream_map(found_asns)
+        while True:
+            c_con = input("\n (#) for J2 (R)einitiate (E)xit : ").lower()
+            if c_con in ['r', 'e']: break
+            if c_con in trace_results and not trace_results[c_con].get("timeout"):
+                show_hop_info(trace_results[c_con])
+                os.system('clear')
+                print(f"\n FFE >> {target} // {proto_name} // {port}")
+                print(f"\n {'Hop':<3} | {'Address':<15} | {'ASN':<6} | {'RTT':<12} | {'TIER':<4} | {'DOMAIN'}")
+                print()
+                for h in sorted(trace_results.keys(), key=int):
+                    d = trace_results[h]
+                    if d.get("timeout"): print(f" {h:<3} |  * * * ")
+                    else: print(f" {h:<3} | {d['ip']:<15} | {d['asn']:<6} | {d['rtt']:<12} | {d['tier']:<4} | {d['domain']}")
+        if c_con == 'e': break
+
+if __name__ == "__main__":
+    run()
