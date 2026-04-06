@@ -1,0 +1,23 @@
+{
+    "5089": {
+        "AS_NAME": "NTL",
+        "AS_CARRIER": "Virgin Media",
+        "AS_DOMAIN": "virginmediao2.co.uk",
+        "NETWORKS": [
+            "80.255.192.0/19",
+            "62.252.5.117/32"
+        ],
+        "TYPE": "INFRA_UK-CORE",
+        "COUNTRY": "GB"
+    },
+    "5459": {
+        "AS_NAME": "London Internet Exchange",
+        "AS_CARRIER": "LINX-AS",
+        "AS_DOMAIN": "linx.net",
+        "NETWORKS": [
+            "195.66.224.0/19"
+        ],
+        "TYPE": "IXP",
+        "COUNTRY": "GB"
+    }
+}

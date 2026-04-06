@@ -1,0 +1,1685 @@
+{
+    "5089": {
+        "stats": {
+            "peers": "80",
+            "upstreams": "4",
+            "downstreams": "59 (Cone: 60)"
+        },
+        "transit": [
+            {
+                "asn": "6830",
+                "name": "Liberty Global Europe Holding B.V."
+            },
+            {
+                "asn": "3356",
+                "name": "Lumen (Level 3)"
+            },
+            {
+                "asn": "12956",
+                "name": "Telxius (Telefonica Global)"
+            },
+            {
+                "asn": "6453",
+                "name": "TATA Communications (America) Inc"
+            }
+        ],
+        "ixps": [
+            {
+                "exchange": "LINX LON1",
+                "ip": "195.66.224.22",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "LINX LON1",
+                "ip": "195.66.224.23",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "LINX Manchester",
+                "ip": "195.66.244.33",
+                "speed": "100 gbps"
+            }
+        ]
+    },
+    "15169": {
+        "stats": {
+            "peers": "4198",
+            "upstreams": "16",
+            "downstreams": "20 (Cone: 21)"
+        },
+        "transit": [
+            {
+                "asn": "1299",
+                "name": "Arelion (fka. Telia Carrier)"
+            },
+            {
+                "asn": "6453",
+                "name": "TATA Communications (America) Inc"
+            },
+            {
+                "asn": "3356",
+                "name": "Lumen (Level 3)"
+            },
+            {
+                "asn": "141013",
+                "name": "GetaFIX Content Network"
+            },
+            {
+                "asn": "214292",
+                "name": "DE-CIX Management GmbH"
+            }
+        ],
+        "ixps": [
+            {
+                "exchange": "IX.br (PTT.br) S\u00e3o Paulo",
+                "ip": "187.16.216.55",
+                "speed": "800 gbps"
+            },
+            {
+                "exchange": "IX.br (PTT.br) S\u00e3o Paulo",
+                "ip": "187.16.218.58",
+                "speed": "800 gbps"
+            },
+            {
+                "exchange": "IX.br (PTT.br) S\u00e3o Paulo",
+                "ip": "187.16.221.212",
+                "speed": "800 gbps"
+            },
+            {
+                "exchange": "IX.br (PTT.br) S\u00e3o Paulo",
+                "ip": "187.16.222.90",
+                "speed": "600 gbps"
+            },
+            {
+                "exchange": "IX.br (PTT.br) Rio de Janeiro",
+                "ip": "45.68.82.72",
+                "speed": "400 gbps"
+            },
+            {
+                "exchange": "IX.br (PTT.br) Rio de Janeiro",
+                "ip": "45.68.80.32",
+                "speed": "400 gbps"
+            },
+            {
+                "exchange": "Extreme IX Mumbai",
+                "ip": "103.77.108.82",
+                "speed": "300 gbps"
+            },
+            {
+                "exchange": "DE-CIX Mumbai",
+                "ip": "103.27.170.10",
+                "speed": "300 gbps"
+            },
+            {
+                "exchange": "Extreme IX Mumbai",
+                "ip": "103.77.108.170",
+                "speed": "300 gbps"
+            },
+            {
+                "exchange": "Extreme IX Mumbai",
+                "ip": "103.77.108.130",
+                "speed": "300 gbps"
+            },
+            {
+                "exchange": "NAPAfrica IX Johannesburg",
+                "ip": "196.60.8.166",
+                "speed": "300 gbps"
+            },
+            {
+                "exchange": "NAPAfrica IX Johannesburg",
+                "ip": "196.60.9.113",
+                "speed": "300 gbps"
+            },
+            {
+                "exchange": "DE-CIX Frankfurt",
+                "ip": "80.81.193.108",
+                "speed": "300 gbps"
+            },
+            {
+                "exchange": "DE-CIX Frankfurt",
+                "ip": "80.81.192.108",
+                "speed": "300 gbps"
+            },
+            {
+                "exchange": "Equinix Warsaw",
+                "ip": "195.182.219.69",
+                "speed": "240 gbps"
+            },
+            {
+                "exchange": "AMS-IX",
+                "ip": "80.249.208.247",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "BBIX Tokyo",
+                "ip": "101.203.88.53",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "NIXI Mumbai",
+                "ip": "103.156.182.250",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "Equinix Chicago",
+                "ip": "208.115.136.21",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "NIX.CZ",
+                "ip": "91.210.16.211",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "JPNAP Tokyo",
+                "ip": "210.173.176.245",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "INEX LAN1",
+                "ip": "185.6.36.57",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "Extreme IX Delhi",
+                "ip": "45.120.248.10",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "Peering.cz",
+                "ip": "185.0.20.171",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "MIX-IT",
+                "ip": "217.29.66.96",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "MIX-IT",
+                "ip": "217.29.66.78",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "JPIX TOKYO",
+                "ip": "210.171.224.95",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "JPIX TOKYO",
+                "ip": "210.171.224.96",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "AMS-IX",
+                "ip": "80.249.209.100",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "BIX.BG",
+                "ip": "193.169.198.80",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "BIX.BG",
+                "ip": "193.169.198.81",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "Equinix Chicago",
+                "ip": "208.115.137.21",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "Extreme IX Delhi",
+                "ip": "45.120.248.20",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "DE-CIX Mumbai",
+                "ip": "103.27.170.11",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "Peering.cz",
+                "ip": "185.0.20.170",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "KINX",
+                "ip": "139.150.100.168",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "NetIX",
+                "ip": "185.1.226.90",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "BBIX Tokyo",
+                "ip": "101.203.88.173",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "NetIX",
+                "ip": "185.1.226.113",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "IXPN Lagos",
+                "ip": "196.216.148.25",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "Equinix Singapore",
+                "ip": "27.111.228.150",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "Equinix Singapore",
+                "ip": "27.111.228.30",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "JPNAP Tokyo",
+                "ip": "210.173.176.243",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "INEX LAN2",
+                "ip": "194.88.240.55",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "NL-ix",
+                "ip": "193.239.117.141",
+                "speed": "200 gbps"
+            },
+            {
+                "exchange": "UA-IX",
+                "ip": "185.1.51.166",
+                "speed": "120 gbps"
+            },
+            {
+                "exchange": "JPNAP Osaka",
+                "ip": "210.173.184.56",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "ChIX",
+                "ip": "206.41.110.73",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Netnod Stockholm GREEN -- MTU1500",
+                "ip": "194.68.123.115",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "NIXI Delhi",
+                "ip": "103.218.244.95",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "IXPlay Global Peers",
+                "ip": "185.1.90.17",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "BBIX Osaka",
+                "ip": "218.100.9.27",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "DET-iX",
+                "ip": "209.124.52.20",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Osaka",
+                "ip": "203.190.227.7",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "DE-CIX Delhi",
+                "ip": "103.27.168.11",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "EdgeIX - Sydney",
+                "ip": "202.77.88.128",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "MASS-IX",
+                "ip": "206.53.143.6",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "LONAP",
+                "ip": "5.57.80.136",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "EPIX.Katowice",
+                "ip": "178.216.40.134",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "IXPN Lagos",
+                "ip": "196.216.148.105",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "MegaIX Ashburn",
+                "ip": "206.53.170.9",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "ChIX",
+                "ip": "206.41.110.37",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "BBIX Singapore",
+                "ip": "103.231.152.35",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "LINX LON1",
+                "ip": "195.66.224.125",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "NetIX",
+                "ip": "185.1.226.30",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Hong Kong",
+                "ip": "36.255.56.12",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Ashburn",
+                "ip": "206.126.237.242",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Giganet IXN",
+                "ip": "185.1.62.69",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "NetIX",
+                "ip": "185.1.226.88",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "DE-CIX Delhi",
+                "ip": "103.27.168.10",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Ninja-IX Phoenix",
+                "ip": "206.41.105.84",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "PIT Santiago - PIT Chile",
+                "ip": "45.68.16.225",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "TorIX",
+                "ip": "206.108.34.6",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "PIT MX",
+                "ip": "200.23.206.205",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "JPNAP Osaka",
+                "ip": "210.173.184.57",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "IX-Denver",
+                "ip": "206.53.175.23",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "MegaIX Ashburn",
+                "ip": "206.53.170.23",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Ninja-IX Phoenix",
+                "ip": "206.41.105.83",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Giganet IXN Warsaw",
+                "ip": "185.1.196.13",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Hong Kong",
+                "ip": "36.255.56.55",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "MegaIX Frankfurt",
+                "ip": "62.69.146.16",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "BBIX Manila",
+                "ip": "61.245.0.39",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "DTEL-IX",
+                "ip": "193.25.181.70",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "DE-CIX Delhi",
+                "ip": "103.27.168.9",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "MegaIX Frankfurt",
+                "ip": "62.69.146.63",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Litix",
+                "ip": "185.1.113.18",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Tokyo",
+                "ip": "203.190.230.31",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Dallas",
+                "ip": "206.223.119.16",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "GetaFIX Manila",
+                "ip": "103.104.19.86",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "PIT Santiago - PIT Chile",
+                "ip": "45.68.16.245",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "GetaFIX Manila",
+                "ip": "103.104.19.85",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Digital Realty Atlanta",
+                "ip": "206.126.110.41",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "JPIX OSAKA",
+                "ip": "103.246.232.95",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "HKIX",
+                "ip": "123.255.91.10",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "NIXI Chennai",
+                "ip": "103.218.247.101",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "NYIIX New York",
+                "ip": "198.32.160.130",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Any2West",
+                "ip": "206.72.210.41",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "KINX",
+                "ip": "139.150.100.169",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Frankfurt",
+                "ip": "185.1.102.59",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Frankfurt",
+                "ip": "185.1.102.53",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix London",
+                "ip": "185.1.104.46",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix London",
+                "ip": "185.1.104.45",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "SIX Seattle",
+                "ip": "206.81.80.69",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "SIX Seattle",
+                "ip": "206.81.80.17",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "DE-CIX Dallas",
+                "ip": "206.53.202.109",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "DE-CIX Dallas",
+                "ip": "206.53.202.11",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "EPIX.Warszawa",
+                "ip": "89.46.144.185",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Giganet IXN Warsaw",
+                "ip": "185.1.196.12",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "MyIX",
+                "ip": "218.100.44.92",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "SFMIX",
+                "ip": "206.197.187.50",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "KIXP - Mombasa icolo",
+                "ip": "196.60.68.22",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Any2Denver",
+                "ip": "206.51.46.3",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix New York",
+                "ip": "198.32.118.39",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "PIT MX",
+                "ip": "200.23.206.204",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "BiX",
+                "ip": "193.188.137.151",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Dallas",
+                "ip": "206.223.118.137",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "HKIX",
+                "ip": "123.255.90.205",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Extreme IX Delhi",
+                "ip": "45.120.248.31",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "FL-IX",
+                "ip": "206.41.108.95",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "FL-IX",
+                "ip": "206.41.108.12",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "SGIX",
+                "ip": "103.16.102.188",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "NYIIX New York",
+                "ip": "198.32.161.20",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "PIT - Colombia - Bogota",
+                "ip": "45.68.24.132",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "SGIX",
+                "ip": "103.16.102.64",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "PIT - Colombia - Bogota",
+                "ip": "45.68.24.131",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "TPIX PL",
+                "ip": "195.149.232.62",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "BiX",
+                "ip": "193.188.137.169",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Manama IX",
+                "ip": "77.69.248.109",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "MINAP Milan",
+                "ip": "185.1.114.26",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Netnod Stockholm BLUE -- MTU1500",
+                "ip": "194.68.128.115",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "TorIX",
+                "ip": "206.108.35.143",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "BBIX US-West",
+                "ip": "101.203.74.13",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Extreme IX Chennai",
+                "ip": "45.120.251.145",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Stockholm",
+                "ip": "185.1.107.48",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Stockholm",
+                "ip": "185.1.107.47",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Lisbon",
+                "ip": "185.1.116.10",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "BBIX Manila",
+                "ip": "61.245.0.40",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Amsterdam",
+                "ip": "185.1.112.94",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Amsterdam",
+                "ip": "185.1.112.93",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Zurich",
+                "ip": "194.42.48.67",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "BBIX Osaka",
+                "ip": "218.100.9.92",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Ashburn",
+                "ip": "206.126.236.21",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Lisbon",
+                "ip": "185.1.116.11",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Digital Realty Atlanta",
+                "ip": "206.126.110.59",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Any2West",
+                "ip": "206.72.211.148",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Zurich",
+                "ip": "194.42.48.64",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Any2Denver",
+                "ip": "206.51.46.95",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "EdgeIX - Sydney",
+                "ip": "202.77.88.60",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "IX-Denver",
+                "ip": "206.53.175.53",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "MASS-IX",
+                "ip": "206.53.143.58",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "InterLAN-IX",
+                "ip": "86.104.125.176",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Giganet IXN",
+                "ip": "185.1.63.152",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "JPIX OSAKA",
+                "ip": "103.246.232.96",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Osaka",
+                "ip": "203.190.227.26",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Tokyo",
+                "ip": "203.190.230.47",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Milan",
+                "ip": "185.1.106.55",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Milan",
+                "ip": "185.1.106.54",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "InterLAN-IX",
+                "ip": "86.104.125.129",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "NIXI Mumbai",
+                "ip": "103.156.182.9",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "ERA-IX Amsterdam",
+                "ip": "185.1.240.60",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "ERA-IX Amsterdam",
+                "ip": "185.1.240.61",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Los Angeles",
+                "ip": "206.223.123.150",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix San Jose",
+                "ip": "206.223.117.119",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "DET-iX",
+                "ip": "209.124.52.21",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix New York",
+                "ip": "198.32.118.48",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "MyIX",
+                "ip": "218.100.44.158",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "GNM-IX",
+                "ip": "178.18.227.7",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "SFMIX",
+                "ip": "206.197.187.96",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix Los Angeles",
+                "ip": "206.223.123.5",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "GNM-IX",
+                "ip": "178.18.225.42",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "BBIX Thailand",
+                "ip": "103.127.88.55",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "GNM-IX",
+                "ip": "178.18.225.41",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "GNM-IX",
+                "ip": "178.18.227.12",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "JINX",
+                "ip": "196.60.96.76",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "JINX",
+                "ip": "196.60.96.41",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "DE-CIX New York",
+                "ip": "206.82.104.202",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "BBIX Singapore",
+                "ip": "103.231.152.50",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "DE-CIX New York",
+                "ip": "206.82.104.41",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Aqaba IX",
+                "ip": "84.252.106.3",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "SLIX - Salt Lake City Internet Exchange",
+                "ip": "149.112.13.41",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "SLIX - Salt Lake City Internet Exchange",
+                "ip": "149.112.13.42",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "DE-CIX Chennai",
+                "ip": "103.228.174.10",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "DE-CIX Chennai",
+                "ip": "103.228.174.11",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "CIX-ATL",
+                "ip": "206.71.12.35",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "CIX-ATL",
+                "ip": "206.71.12.25",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "1-IX UA",
+                "ip": "185.1.213.44",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "Equinix San Jose",
+                "ip": "206.223.116.21",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "NIXI Delhi",
+                "ip": "103.218.244.101",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "UAE-IX",
+                "ip": "185.1.8.117",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "UAE-IX",
+                "ip": "185.1.8.100",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "LINX LON2",
+                "ip": "195.66.236.125",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "LINX Mombasa",
+                "ip": "196.60.124.113",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "BBIX US-West",
+                "ip": "101.203.74.29",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "AR-IX Cabase - Argentina",
+                "ip": "45.68.8.238",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "THAILAND IX (TH-IX)",
+                "ip": "61.19.60.182",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "BBIX Thailand",
+                "ip": "103.127.88.56",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "THAILAND IX (TH-IX)",
+                "ip": "61.19.60.181",
+                "speed": "100 gbps"
+            },
+            {
+                "exchange": "DTEL-IX",
+                "ip": "193.25.181.62",
+                "speed": "80 gbps"
+            },
+            {
+                "exchange": "UA-IX",
+                "ip": "185.1.50.166",
+                "speed": "60 gbps"
+            },
+            {
+                "exchange": "BiX",
+                "ip": "193.188.137.163",
+                "speed": "50 gbps"
+            },
+            {
+                "exchange": "Extreme IX Chennai",
+                "ip": "45.120.251.127",
+                "speed": "50 gbps"
+            },
+            {
+                "exchange": "Extreme IX Chennai",
+                "ip": "45.120.251.135",
+                "speed": "50 gbps"
+            },
+            {
+                "exchange": "TPIX-TW",
+                "ip": "203.163.222.118",
+                "speed": "40 gbps"
+            },
+            {
+                "exchange": "TPIX-TW",
+                "ip": "203.163.222.21",
+                "speed": "40 gbps"
+            },
+            {
+                "exchange": "SOX Serbia",
+                "ip": "185.1.27.120",
+                "speed": "40 gbps"
+            },
+            {
+                "exchange": "Equinix Miami",
+                "ip": "198.32.242.133",
+                "speed": "40 gbps"
+            },
+            {
+                "exchange": "SOX Serbia",
+                "ip": "185.1.27.60",
+                "speed": "40 gbps"
+            },
+            {
+                "exchange": "Frys-IX",
+                "ip": "185.1.160.220",
+                "speed": "30 gbps"
+            },
+            {
+                "exchange": "SwissIX",
+                "ip": "91.206.52.223",
+                "speed": "30 gbps"
+            },
+            {
+                "exchange": "SwissIX",
+                "ip": "91.206.52.74",
+                "speed": "30 gbps"
+            },
+            {
+                "exchange": "Frys-IX",
+                "ip": "185.1.160.180",
+                "speed": "30 gbps"
+            },
+            {
+                "exchange": "SOLIX MTU1500",
+                "ip": "193.110.13.102",
+                "speed": "30 gbps"
+            },
+            {
+                "exchange": "MegaIX Melbourne",
+                "ip": "103.26.71.181",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Equinix Paris",
+                "ip": "195.42.145.65",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Equinix Palo Alto",
+                "ip": "198.32.176.31",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Pacific Wave",
+                "ip": "207.231.242.20",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "kremen-IX",
+                "ip": "185.1.198.31",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "kremen-IX",
+                "ip": "185.1.198.30",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "CANIX Montreal",
+                "ip": "198.179.18.96",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "CANIX Montreal",
+                "ip": "198.179.18.72",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Equinix Sydney",
+                "ip": "45.127.172.73",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Equinix Atlanta",
+                "ip": "198.32.182.32",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "RoNIX",
+                "ip": "185.1.103.97",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Equinix S\u00e3o Paulo",
+                "ip": "64.191.233.188",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "THINX Warsaw",
+                "ip": "212.91.1.240",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "BALT-IX",
+                "ip": "77.241.206.43",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Equinix S\u00e3o Paulo",
+                "ip": "64.191.233.187",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "BALT-IX",
+                "ip": "77.241.206.42",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "CATNIX",
+                "ip": "193.242.98.156",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "KleyReX",
+                "ip": "193.189.83.197",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "MegaIX Sydney",
+                "ip": "103.26.68.56",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Equinix Sydney",
+                "ip": "45.127.172.159",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Equinix Palo Alto",
+                "ip": "198.32.176.189",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "France-IX Paris",
+                "ip": "37.49.236.2",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "T-CIX",
+                "ip": "185.1.40.15",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "B-IX",
+                "ip": "185.1.30.10",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Equinix Seattle",
+                "ip": "198.32.134.26",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Equinix Seattle",
+                "ip": "198.32.134.30",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Namex Rome",
+                "ip": "193.201.28.86",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Equinix Melbourne",
+                "ip": "183.177.61.4",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "MegaIX Melbourne",
+                "ip": "103.26.71.182",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Equinix Melbourne",
+                "ip": "183.177.61.27",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "NIX.SK",
+                "ip": "194.30.187.211",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "TOP-IX",
+                "ip": "194.116.96.60",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "POZIX",
+                "ip": "185.1.4.45",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Equinix Atlanta",
+                "ip": "198.32.182.241",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Equinix Paris",
+                "ip": "195.42.144.100",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "France-IX Paris",
+                "ip": "37.49.237.172",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "RoNIX",
+                "ip": "185.1.103.94",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "GIXA",
+                "ip": "196.201.2.118",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "LU-CIX",
+                "ip": "188.93.170.91",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "AMS-IX Lagos",
+                "ip": "196.60.58.14",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "AMS-IX Lagos",
+                "ip": "196.60.58.29",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "MegaIX Sydney",
+                "ip": "103.26.68.6",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Equinix Miami",
+                "ip": "198.32.243.196",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "DE-CIX Madrid",
+                "ip": "185.1.192.25",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Pacific Wave",
+                "ip": "207.231.242.22",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "NSW-IX",
+                "ip": "218.100.52.3",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Speed-IX",
+                "ip": "185.1.222.82",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "center3 IX Jeddah",
+                "ip": "185.1.126.247",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Manama IX",
+                "ip": "77.69.248.22",
+                "speed": "20 gbps"
+            },
+            {
+                "exchange": "Equinix Dublin",
+                "ip": "185.1.109.42",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "MegaIX Seattle",
+                "ip": "206.53.171.8",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "MegaIX Toronto",
+                "ip": "206.53.203.14",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "STHIX - Stockholm",
+                "ip": "192.121.80.47",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "STHIX - Stockholm",
+                "ip": "192.121.80.89",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "LINX NoVA",
+                "ip": "206.55.196.65",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "NSW-IX",
+                "ip": "218.100.53.29",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "ESpanix Madrid Lower LAN",
+                "ip": "193.149.1.49",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "Asteroid Amsterdam",
+                "ip": "185.1.94.28",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "MegaIX Sofia",
+                "ip": "91.212.235.14",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "Equinix S\u00e3o Paulo",
+                "ip": "64.191.232.29",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "KRIX(SEJONG)",
+                "ip": "203.255.115.161",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "KRIX(SEJONG)",
+                "ip": "203.255.114.161",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "DE-CIX Munich",
+                "ip": "185.1.208.170",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "DE-CIX Marseille",
+                "ip": "185.1.47.3",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "MegaIX Toronto",
+                "ip": "206.53.203.9",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "BR-IX",
+                "ip": "185.1.25.23",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "MegaIX Munich",
+                "ip": "194.59.190.20",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "CSL Thai-IX Malaysia",
+                "ip": "27.254.16.3",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "TWIX",
+                "ip": "210.62.255.78",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "Equinix Madrid",
+                "ip": "185.1.22.6",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "Equinix Madrid",
+                "ip": "185.1.22.5",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "MegaIX Hamburg",
+                "ip": "193.42.155.27",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "ESpanix Madrid Upper LAN",
+                "ip": "185.79.175.49",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "EdgeIX - Melbourne",
+                "ip": "202.77.90.27",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "EdgeIX - Melbourne",
+                "ip": "202.77.90.29",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "LINX NoVA",
+                "ip": "206.55.196.29",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "DE-CIX Barcelona",
+                "ip": "185.1.119.28",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "BBIX Hong Kong",
+                "ip": "103.203.158.50",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "STUIX",
+                "ip": "103.158.187.76",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "MegaIX Seattle",
+                "ip": "206.53.171.16",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "ESpanix Madrid Lower LAN",
+                "ip": "193.149.1.94",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "MegaIX Munich",
+                "ip": "194.59.190.61",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "France-IX Marseille",
+                "ip": "37.49.232.5",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "SH-IX",
+                "ip": "185.1.15.23",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "STUIX",
+                "ip": "103.158.187.77",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "CHIX-CH",
+                "ip": "185.1.59.169",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "WSNL-IX",
+                "ip": "103.174.246.64",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "DE-CIX Hamburg",
+                "ip": "185.1.210.34",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "WSNL-IX",
+                "ip": "103.174.246.65",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "Equinix Toronto",
+                "ip": "198.32.181.10",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "ESpanix Madrid Upper LAN",
+                "ip": "185.79.175.147",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "BBIX Amsterdam",
+                "ip": "101.203.78.13",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "BBIX Amsterdam",
+                "ip": "101.203.78.12",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "RUDAKI-IX",
+                "ip": "185.1.225.31",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "MegaIX Sofia",
+                "ip": "91.212.235.30",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "MegaIX Hamburg",
+                "ip": "193.42.155.46",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "Equinix Helsinki",
+                "ip": "185.1.86.34",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "IXP APROSVA PASAJE",
+                "ip": "170.82.113.114",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "ix.kw",
+                "ip": "194.54.136.31",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "Equinix Toronto",
+                "ip": "198.32.181.9",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "BBIX Hong Kong",
+                "ip": "103.203.158.35",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "Equinix Bogota",
+                "ip": "208.115.128.51",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "TWIX",
+                "ip": "210.62.255.79",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "DE-CIX Lisbon",
+                "ip": "185.1.131.18",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "IXPlay Global Peers",
+                "ip": "185.1.90.45",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "Insta-IX Delhi",
+                "ip": "103.171.204.241",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "AMS-IX Mumbai",
+                "ip": "223.31.200.13",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "Equinix Bogota",
+                "ip": "208.115.128.50",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "VIC-IX",
+                "ip": "218.100.78.153",
+                "speed": "10 gbps"
+            },
+            {
+                "exchange": "VIC-IX",
+                "ip": "218.100.78.154",
+                "speed": "10 gbps"
+            }
+        ]
+    }
+}
