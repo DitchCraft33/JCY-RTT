@@ -1,0 +1,73 @@
+# pipe ... echo vx-london | python3 jay-who.py
+# else ... python3 jay-who.py vx-london
+
+import sys
+import json
+
+def load_db(filename):
+    try:
+        with open(filename, 'r') as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+
+def jay_who(query):
+    asn_map = load_db('asn_map.json')
+    net_v4 = load_db('network_db_v4.json')
+    query = query.lower().strip()
+    
+    results = {}
+
+    for asn, data in asn_map.items():
+        handle = str(data.get("handle", "")).lower()
+        desc = str(data.get("description", "")).lower()
+        
+        if query in handle or query in desc:
+            results[asn] = {
+                "ASN": asn,
+                "HANDLE": data.get("handle"),
+                "DESCRIPTION": data.get("description"),
+                "LOCATION": data.get("countryCode", "??"),
+                "TIER": data.get("tier", "N/A"),
+                "SOURCE": "asn_map.json"
+            }
+
+    for asn, data in net_v4.items():
+        name = str(data.get("AS_NAME", "")).lower()
+        domain = str(data.get("AS_DOMAIN", "")).lower()
+        
+        if query in name or query in domain:
+            if asn in results:
+                results[asn]["DOMAIN"] = data.get("AS_DOMAIN")
+                results[asn]["SOURCE"] = "asn_map + network_db"
+            else:
+                results[asn] = {
+                    "ASN": asn,
+                    "HANDLE": "N/A",
+                    "DESCRIPTION": data.get("AS_NAME"),
+                    "DOMAIN": data.get("AS_DOMAIN"),
+                    "LOCATION": data.get("COUNTRY_CODE", "??"),
+                    "TIER": "N/A",
+                    "SOURCE": "network_db_v4.json"
+                }
+
+    matches = list(results.values())
+
+    if not matches:
+        return {"ERROR": f"No matches found for '{query}'"}
+    
+    return {
+        "QUERY": query, 
+        "TOTAL_MATCHES": len(matches), 
+        "RESULTS": matches
+    }
+
+if __name__ == "__main__":
+
+    if not sys.stdin.isatty():
+        search_term = sys.stdin.read().strip()
+    else:
+        search_term = " ".join(sys.argv[1:]) if len(sys.argv) > 1 else None
+
+    if search_term:
+        print(json.dumps(jay_who(search_term), indent=4))
