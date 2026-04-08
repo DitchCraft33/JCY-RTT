@@ -1,0 +1,105 @@
+# ipv4 ... echo 187.16.221.212 | python3 jay-view.py
+# asn  ... echo 15169 | python3 jay-view.py
+# dns  ... echo $(dig +short google.com | tail -n1) | python3 jay-view.py
+
+import sys
+import json
+import ipaddress
+
+def load_db(filename):
+    try:
+        with open(filename, 'r') as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+
+def truncate_list(data_block, key, limit, note):
+    if key in data_block and isinstance(data_block[key], list):
+        items = data_block[key]
+        total = len(items)
+        if total > limit:
+            label = "top_three" if limit == 3 else "top_six"
+            data_block[key] = {
+                label: items[:limit],
+                "total_count": total,
+                "note": note
+            }
+    return data_block
+
+def jay_view(target):
+    local_infra = load_db('local_infra.json')
+    asn_map = load_db('asn_map.json')
+    net_v4 = load_db('network_db_v4.json')
+    upstream = load_db('upstream_map.json')
+    data_blocks = []
+    found_asn = None
+    matched_cidr = None
+    lookup_ip = None
+
+    try:
+        if "/" in target:
+            lookup_ip = str(ipaddress.ip_network(target, strict=False)[0])
+        else:
+            ipaddress.ip_address(target)
+            lookup_ip = target
+    except ValueError:
+        found_asn = target.upper().replace("AS", "")
+
+    if lookup_ip:
+        ip_obj = ipaddress.ip_address(lookup_ip)
+        
+        databases_to_scan = [local_infra, net_v4]
+        for db in databases_to_scan:
+            for asn, data in db.items():
+                if isinstance(data, dict):
+                    networks = data.get("NETWORKS", [])
+                    for cidr in networks:
+                        try:
+                            if ip_obj in ipaddress.ip_network(cidr):
+                                found_asn, matched_cidr = str(asn), cidr
+                                break
+                        except ValueError: continue
+                if found_asn: break
+            if found_asn: break
+
+        if not found_asn:
+            for asn, data in upstream.items():
+                ixps = data.get("ixps", [])
+                if isinstance(ixps, list):
+                    for entry in ixps:
+                        if entry.get("ip") == lookup_ip:
+                            found_asn = str(asn)
+                            matched_cidr = f"IXP_PEER_IP ({entry.get('exchange', 'Unknown Exchange')})"
+                            break
+                if found_asn: break
+
+    if found_asn:
+        sources = [
+            ("asn_map.json", asn_map), 
+            ("upstream_map.json", upstream), 
+            ("local_infra.json", local_infra),
+            ("network_db_v4.json", net_v4)
+        ]
+        for filename, db in sources:
+            if found_asn in db:
+                block_copy = json.loads(json.dumps(db[found_asn]))
+                if "ixps" in block_copy:
+                    block_copy = truncate_list(block_copy, "ixps", 3, "Manual Search Required for Full List ...")
+                if "NETWORKS" in block_copy:
+                    block_copy = truncate_list(block_copy, "NETWORKS", 6, "Manual Search Required for Full Network List ...")
+                
+                data_blocks.append({"SOURCE": filename, "DATA": block_copy})
+
+        return {
+            "IDENTIFIERS": {
+                "ASN": found_asn,
+                "MATCHED_CIDR": matched_cidr if matched_cidr else "ASN_LOOKUP"
+            },
+            "RESULTS": data_blocks
+        }
+    return {"ERROR": f"No data found for '{target}' in J2 Databases."}
+
+if __name__ == "__main__":
+    input_data = sys.stdin.read().strip() if not sys.stdin.isatty() else (sys.argv[1] if len(sys.argv) > 1 else None)
+    if input_data:
+        print(json.dumps(jay_view(input_data), indent=4))
