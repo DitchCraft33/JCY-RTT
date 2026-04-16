@@ -1,0 +1,98 @@
+# JAY-SLEW iot ... Map Fabric through rDNS via Piped Input
+# Single Range ... echo 62.252.0 | python3 jay-slew.py
+# Multi Ranges ... printf "62.252.0\n62.252.1" | python3 jay-slew.py
+# Pipe the Cat ... cat targets.txt | python script.py
+# Add Staggers ... import random // time.sleep(random.uniform(0.2, 0.8)
+# GIL Fallback ... python3 jay-slew.py
+
+import sys
+import subprocess
+import concurrent.futures
+import json
+import time
+import re
+
+with open('attributes.json', 'r') as f:
+    ATTRS = json.load(f)
+with open('locations.json', 'r') as f:
+    LOCS = json.load(f)
+
+def get_rdns(ip):
+    try:
+        time.sleep(0.05) 
+        cmd = ["dig", "+short", "+time=2", "-x", ip]
+        name = subprocess.check_output(cmd, stderr=subprocess.STDOUT).decode().strip().rstrip('.')
+        if not name or ";" in name:
+            return ip, None
+        return ip, name
+    except:
+        return ip, None
+
+def parse_node(name):
+    tokens = re.split(r'[\.\-]', name.lower())
+    
+    node_details = {
+        "roles": {},
+        "hardware": {},
+        "services": {},
+        "conditions": {},
+        "location": "UNKNOWN"
+    }
+
+    def get_val(t, category):
+        if t in category: return category[t]
+        for key, val in category.items():
+            if any(c in key for c in '[]*+'):
+                if re.fullmatch(key, t): return val
+        return None
+
+    for token in tokens:
+    
+        if token in LOCS['city_codes']:
+            node_details["location"] = LOCS['city_codes'][token]
+            
+        res = get_val(token, ATTRS['roles'])
+        if res: node_details["roles"][token] = res['description'] if isinstance(res, dict) else res
+            
+        res = get_val(token, ATTRS['hardware_interfaces'])
+        if res: node_details["hardware"][token] = res['description'] if isinstance(res, dict) else res
+            
+        res = get_val(token, ATTRS['services'])
+        if res: node_details["services"][token] = res['description'] if isinstance(res, dict) else res
+            
+        res = get_val(token, ATTRS['conditions'])
+        if res: node_details["conditions"][token] = res
+
+    for key, desc in ATTRS['conditions'].items():
+        if '-' in key and key in name.lower():
+            node_details["conditions"][key] = desc
+
+    return {k: v for k, v in node_details.items() if v}
+    
+def rack_map(base_ip):
+    base_ip = base_ip.strip()
+    if not base_ip: return
+    print(f"\n [!] COMMENCING SWEEP: {base_ip}.0/24")
+    inventory = []
+    
+    with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        ips = [f"{base_ip}.{i}" for i in range(256)]
+        results = list(executor.map(get_rdns, ips))
+
+    for ip, name in results:
+        if name:
+            meta = parse_node(name)
+            node_data = {"ip": ip, "hostname": name, "analysis": meta}
+            inventory.append(node_data)
+            print(f"  [+] Captured: {ip} -> {name}")
+
+    filename = f"mapped_{base_ip.replace('.', '_')}.json"
+    with open(filename, "w") as f:
+        json.dump({"subnet": f"{base_ip}.0/24", "nodes": inventory}, f, indent=4)
+    print(f"\n [!] SUCCESS: {len(inventory)} Nodes be Slew ... {filename}")
+
+if __name__ == "__main__":
+    if not sys.stdin.isatty():
+        for line in sys.stdin: rack_map(line)
+    else:
+        rack_map("62.252.0")
