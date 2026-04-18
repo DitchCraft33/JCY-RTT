@@ -1,0 +1,23 @@
+{
+    "metadata": {
+        "list_name": "Internal Blacklist",
+        "last_updated": "2026-04-18",
+        "version": "1.0"
+    },
+    "entries": [
+        {
+            "type": "ipv4",
+            "value": "1.2.3.4",
+            "reason": "Repeated SSH brute force",
+            "tags": ["ns", "malicious"],
+            "severity": "high"
+        },
+        {
+            "type": "asn",
+            "value": "AS12345",
+            "entity_name": "Example Bad Hosting",
+            "tags": ["v", "high-risk-region"],
+            "conditions": ["cust", "leasedline"]
+        }
+    ]
+}
