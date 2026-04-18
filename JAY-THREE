@@ -1,0 +1,62 @@
+import sys
+import json
+import os
+
+# echo 111.56.44.197 | python3 JAY-THREE.py
+# echo 111.56.44.197 | python3 JAY-THREE.py | grep abuseConfidenceScore
+#
+# echo "ns" | python3 JAY-THREE.py
+# echo 4323 | python3 JAY-THREE.py
+#
+# echo "Crystaltech Web Hosting Inc." | python3 JAY-THREE.py
+# cat list.txt | python3 JAY-THREE.py
+
+def get_records(data):
+
+    if isinstance(data, list):
+        return data
+    if isinstance(data, dict):
+        for key in ['data', 'entries']:
+            if key in data and isinstance(data[key], list):
+                return data[key]
+    return []
+
+def main():
+
+    db_records = []
+    files = ['bad_asn_list.json', 'bad_ip_list.json', 'naughty_list.json']
+    
+    for filename in files:
+        if os.path.exists(filename):
+            try:
+                with open(filename, 'r', encoding='utf-8') as f:
+                    db_records.extend(get_records(json.load(f)))
+            except Exception:
+                continue
+
+
+    found_any = False
+    for line in sys.stdin:
+        query = line.strip().lower()
+        if not query:
+            continue
+        
+
+        for entry in db_records:
+            match = False
+            for val in entry.values():
+                if isinstance(val, list):
+                    if any(str(item).lower() == query for item in val):
+                        match = True
+                elif str(val).lower() == query:
+                    match = True
+            
+            if match:
+                print(json.dumps(entry, indent=4))
+                found_any = True
+                break 
+
+    sys.exit(0 if found_any else 1)
+
+if __name__ == "__main__":
+    main()
